@@ -2,18 +2,17 @@
 2022-06-25 by Your Name Here
 
 Credits: 
-A. Nother Student, And Another:  Sketched pseudocode together
-Our Friend:  Helped debug
 """
 
 """ EXAMPLE OF ERROR: when we don't have a file in the same directory
 dict_file2 = open("words.txt") """
 
 # DICT = "shortdict.txt"    # Short version for testing & debugging
-DICT = "dict.txt"       # Full dictionary word 
+DICT = "dict.txt"           # Full dictionary word 
 
-def find(anagram: str):
-    """Print words in DICT that match anagram.
+def find(anagram: str):     #defining our find() function
+    """
+    Print words in DICT that match anagram.
   
     >>> find("AgEmo")
     omega
@@ -27,14 +26,15 @@ def find(anagram: str):
     awake
   
     """
-    dict_file = open(DICT, "r")
-    for line in dict_file:
-        word = line.strip()
-        if normalize(word) == normalize(anagram):
+    dict_file = open(DICT, "r") #opening dictionary file
+    for line in dict_file:      #looping through each word to see if we have a match
+        word = line.strip()     #stripping new lines in dictionary file
+        if normalize(word) == normalize(anagram):    #checking to see if we have a match, if we do we print the dictionary word
             print(word)
 
-def normalize(word: str) -> list[str]:
-    """Returns a list of characters that is canonical for anagrams.
+def normalize(word: str) -> list[str]:    #defining our normalize() function
+    """
+    Returns a list of characters that is canonical for anagrams.
     
     >>> normalize("gamma") == normalize("magam")
     True
@@ -48,12 +48,12 @@ def normalize(word: str) -> list[str]:
     >>> normalize("KAWEA") == normalize("gamma")
     False
     """
-    word = word.upper()
-    return sorted(word)
+    word = word.upper()    #converting every word to upper case letters
+    return sorted(word)    #returning the upper cased word
 
 def main(): 
-    anagram = input("Anagram to find> ")
-    find(anagram)
+    anagram = input("Anagram to find> ")    #asking user to input an anagram
+    find(anagram)                           #pluggin the input word into our find() function to find a match
 
 if __name__ == "__main__":
     main()
